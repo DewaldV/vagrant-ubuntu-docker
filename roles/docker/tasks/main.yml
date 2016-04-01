@@ -1,0 +1,28 @@
+---
+- name: Add Docker Signing Key
+  apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D
+
+- name: Add Docker Repos
+  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-trusty main' state=present
+
+- name: Install Apt transport package
+  apt: name=apt-transport-https
+
+- name: Install ca-ceritfications
+  apt: name=ca-certificates
+
+- name: Install Kernel Extras
+  apt: name="linux-image-extra-{{ ansible_kernel }}"
+
+- name: Install Docker Engine
+  apt: name=docker-engine state=latest
+
+- name: Start Docker Service
+  service: name=docker state=started enabled=yes
+
+- name: Add vagrant user to docker group.
+  user:
+    name: vagrant
+    groups: docker
+    append: yes
+  become: yes

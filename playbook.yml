@@ -1,0 +1,7 @@
+---
+- name: Ubuntu 14.04 Docker Host
+  hosts: all
+  user: vagrant
+  become: yes
+  roles:
+    - docker
