@@ -15,7 +15,7 @@ For tests
 ### Getting Started ###
 To start simply type: `vagrant up`
 
-You can reach any exposed ports for your containers on `192.168.50.100`
+You can reach any exposed ports for your containers on `192.168.50.110`
 
 ### Server Spec Tests ###
 
